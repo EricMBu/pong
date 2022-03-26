@@ -1,0 +1,11 @@
+C:\Users\ericm\ericm\projects\pong\pong\bin\Debug\pong.exe.config
+C:\Users\ericm\ericm\projects\pong\pong\bin\Debug\pong.exe
+C:\Users\ericm\ericm\projects\pong\pong\bin\Debug\pong.pdb
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.csproj.AssemblyReference.cache
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.csproj.SuggestedBindingRedirects.cache
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.Form1.resources
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.Properties.Resources.resources
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.csproj.GenerateResource.cache
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.csproj.CoreCompileInputs.cache
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.exe
+C:\Users\ericm\ericm\projects\pong\pong\obj\Debug\pong.pdb
