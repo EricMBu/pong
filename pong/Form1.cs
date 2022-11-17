@@ -6,6 +6,7 @@ namespace pong
 {
     public partial class Form1 : Form
     {
+        private Boolean paused = false;
         //scores
         private int rightScore = 0;
         private int leftScore = 0;
@@ -44,48 +45,57 @@ namespace pong
                 xDir *= -1;
             }
 
+            //score
             if (ballPoint.X <= 0)
             {
-                yDir = 1;
-                leftScore += 1;
-                lblScore1.Text = leftScore.ToString();
-            }
-            if (ballPoint.X + ball.Width >= this.Width)
-            {
-                ball.Location = new Point(384, 196);
-                yDir = -1;
+                ballPoint = new Point(384, 196);
+                xDir *= -1;
                 rightScore += 1;
                 lblScore2.Text = rightScore.ToString();
             }
+            if (ballPoint.X + ball.Width >= this.Width)
+            {
+                ballPoint = new Point (384, 196);
+                xDir *= -1;
+                leftScore += 1;
+                lblScore1.Text = leftScore.ToString();
+            }
 
             //paddle1 movement
-            if (goingUp1 && paddlePoint1.Y >= 0)
+            if (!paused)
             {
-                paddlePoint1.Y -= 10;
-            }
-            if (goingDown1 && (paddlePoint1.Y + 1.5 * paddle1.Height) <= this.Height)
-            {
-                paddlePoint1.Y += 10;
-            }
+                if (goingUp1 && paddlePoint1.Y >= 0)
+                {
+                    paddlePoint1.Y -= 10;
+                }
+                if (goingDown1 && (paddlePoint1.Y + 1.5 * paddle1.Height) <= this.Height)
+                {
+                    paddlePoint1.Y += 10;
+                }
 
-            //paddle2 movement
-            if (goingUp2 && paddlePoint2.Y >= 0)
-            {
-                paddlePoint2.Y -= 10;
+                //paddle2 movement
+                if (goingUp2 && paddlePoint2.Y >= 0)
+                {
+                    paddlePoint2.Y -= 10;
+                }
+                if (goingDown2 && (paddlePoint2.Y + 1.5 * paddle2.Height) <= this.Height)
+                {
+                    paddlePoint2.Y += 10;
+                }
+                paddle1.Location = paddlePoint1;
+                paddle2.Location = paddlePoint2;
             }
-            if (goingDown2 && (paddlePoint2.Y + 1.5 * paddle2.Height) <= this.Height)
-            {
-                paddlePoint2.Y += 10;
-            }
-            paddle1.Location = paddlePoint1;
-            paddle2.Location = paddlePoint2;
+            
         }
 
         private void BallMove()
         {
-            ballPoint.X += xDir * vel;
-            ballPoint.Y += yDir * vel;
-            ball.Location = new Point(ballPoint.X, ballPoint.Y);
+            if (!paused)
+            {
+                ballPoint.X += xDir * vel;
+                ballPoint.Y += yDir * vel;
+                ball.Location = new Point(ballPoint.X, ballPoint.Y);
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -115,6 +125,11 @@ namespace pong
             {
                 goingUp2 = true;
                 goingDown2 = false;
+            }
+
+            if(e.KeyCode == Keys.Escape)
+            {
+                paused = !paused;
             }
         }
 
